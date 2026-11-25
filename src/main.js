@@ -27,9 +27,6 @@ function eventMarkup() {
           <div class="arch-inner">
             <p class="eyebrow">WITH GRATEFUL HEARTS, WE INVITE YOU</p>
             <div class="ornament-rule" aria-hidden="true"><span>✦</span></div>
-            <svg class="hero-birds" viewBox="0 0 210 58" aria-hidden="true">
-              <path d="M8 31c14-15 29-15 44 0 13-13 25-13 38 0M115 20c11-12 22-12 34 0 10-10 20-10 30 0M77 46c8-8 16-8 24 0" />
-            </svg>
             <span class="cross" aria-hidden="true">✝</span>
             <h1 id="event-title">Kinri’s</h1>
             <p class="event-type">Holy Baptism</p>
@@ -40,8 +37,6 @@ function eventMarkup() {
             <a class="primary-button hero-button" href="#rsvp">Kindly respond <span aria-hidden="true">↓</span></a>
           </div>
         </div>
-        <img class="sprig sprig-left" src="/images/botanical-sprig.svg" alt="" />
-        <img class="sprig sprig-right" src="/images/botanical-sprig.svg" alt="" />
       </section>
 
       <section class="details section" aria-labelledby="details-title">
