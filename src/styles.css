@@ -26,7 +26,7 @@ button { cursor: pointer; }
 .top-link { color: var(--ink); font-size: 10px; font-weight: 700; letter-spacing: .16em; text-decoration: none; text-transform: uppercase; }
 .top-link span { padding-left: 5px; color: var(--blue); }
 .hero { position: relative; display: grid; min-height: 770px; min-height: min(940px, 100svh); place-items: center; overflow: hidden; padding: 92px 20px 70px; background-color: #f7f8f6; background-image: radial-gradient(ellipse at 50% 40%, rgba(255,255,255,.98) 0%, rgba(251,251,248,.95) 52%, rgba(240,243,244,.82) 100%), radial-gradient(circle, rgba(89,125,163,.12) .8px, transparent 1px); background-size: auto, 24px 24px; }
-.hero::before, .hero::after { position: absolute; top: -110px; width: min(54vw, 640px); height: min(70vw, 820px); border: 1px solid #9db5ce; border-radius: 50% 50% 0 0 / 29% 29% 0 0; content: ""; pointer-events: none; }
+.hero::before, .hero::after { position: absolute; top: 24px; width: min(54vw, 640px); height: min(70vw, 820px); border: 1px solid #9db5ce; border-radius: 50% 50% 0 0 / 29% 29% 0 0; content: ""; pointer-events: none; }
 .hero::before { box-shadow: inset 0 0 0 7px var(--paper), inset 0 0 0 8px #c3d1df; }
 .hero::after { width: min(56vw, 660px); height: min(71vw, 840px); border-color: rgba(99,134,173,.34); transform: translateY(11px); }
 .arch { position: relative; z-index: 1; width: min(100%, 620px); margin-top: 20px; text-align: center; }
