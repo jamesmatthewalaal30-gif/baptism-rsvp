@@ -74,7 +74,7 @@ function eventMarkup() {
           <p class="eyebrow">YOUR PRESENCE IS A GIFT</p>
           <div class="ornament-divider" aria-hidden="true"><span>✦</span></div>
           <h2 id="rsvp-title">Kindly reply</h2>
-          <p class="section-intro">Enter your name and let us know if you can join us.</p>
+          <p class="section-intro">Please RSVP by <strong>18 December 2026</strong>, and let us know if you can join us.</p>
         </div>
         <div id="rsvp-panel" class="rsvp-panel"></div>
       </section>
@@ -86,7 +86,12 @@ function showPanel() {
   const panel = document.querySelector('#rsvp-panel');
   if (state.submitted) {
     panel.innerHTML = `
-      <div class="notice notice-success" role="status">${escapeHtml(state.message)}</div>
+      <div class="form-card confirmation-card" role="status" aria-live="polite">
+        <span class="confirmation-mark" aria-hidden="true">✓</span>
+        <p class="eyebrow">RSVP RECEIVED</p>
+        <h3>Thank you!</h3>
+        <p class="confirmation-message">${escapeHtml(state.message)}</p>
+      </div>
       <button class="text-button another-response" type="button">Submit another response</button>`;
     panel.querySelector('.another-response').addEventListener('click', () => {
       state.submitted = false;
@@ -121,7 +126,7 @@ async function request(url, options) {
   try {
     response = await fetch(url, { ...options, redirect: 'follow' });
   } catch {
-    throw new Error('We could not reach the RSVP service. Please check your connection and try again.');
+    throw new Error('Could not reach the RSVP service. Check your connection, then verify the Apps Script web app allows access to Anyone and Render uses its full /exec URL.');
   }
   let result;
   try {

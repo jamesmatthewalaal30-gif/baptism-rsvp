@@ -3,7 +3,7 @@ const SHEET_HEADERS = {
   INVITED_GUESTS: ['guest_id', 'invitation_id', 'guest_name', 'guest_role', 'rsvp_status'],
   RSVP_RESPONSES: ['response_id', 'invitation_id', 'guest_id', 'guest_name', 'attendance_status', 'contact_number', 'submitted_at'],
 };
-const RSVP_DEADLINE = '2027-01-28T11:30:00+08:00';
+const RSVP_DEADLINE = '2026-12-19T00:00:00+08:00';
 const COMPANION_MIGRATION_PROPERTY = 'COMPANION_GUEST_MIGRATION_V1';
 
 function setupSheets() {
@@ -169,7 +169,7 @@ function verifyInvitation_(invitationId, invitationCode) {
 }
 
 function submitRsvp_(payload) {
-  if (!isRsvpOpen_(new Date())) throw apiError_('rsvp_closed', 'The RSVP deadline has passed. Please contact the baptism organizers if you need to make a change.');
+  if (!isRsvpOpen_(new Date())) throw apiError_('rsvp_closed', 'The RSVP deadline was December 18, 2026. Please contact the baptism organizers if you need to make a change.');
 
   const lock = LockService.getScriptLock();
   if (!lock.tryLock(20000)) throw apiError_('busy', 'The RSVP service is busy. Please try again in a moment.');
@@ -265,7 +265,7 @@ function submitRsvp_(payload) {
 }
 
 function submitOpenRsvp_(payload) {
-  if (!isRsvpOpen_(new Date())) throw apiError_('rsvp_closed', 'The RSVP deadline has passed. Please contact the baptism organizers if you need to make a change.');
+  if (!isRsvpOpen_(new Date())) throw apiError_('rsvp_closed', 'The RSVP deadline was December 18, 2026. Please contact the baptism organizers if you need to make a change.');
   const guestName = cleanRequired_(payload.guest_name, 120, 'Guest name');
   const status = payload.attendance_status;
   if (status !== 'attending' && status !== 'declined') {
@@ -308,7 +308,7 @@ function submitOpenRsvp_(payload) {
 }
 
 function isRsvpOpen_(now) {
-  return now.getTime() <= new Date(RSVP_DEADLINE).getTime();
+  return now.getTime() < new Date(RSVP_DEADLINE).getTime();
 }
 
 function adminDashboard_() {
