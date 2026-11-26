@@ -113,6 +113,10 @@ footer p { margin: 8px 0 0; font-family: "Playfair Display", Georgia, serif; fon
 footer .footer-date { margin-top: 6px; color: #7a8a9b; font-family: "DM Sans", sans-serif; font-size: 9px; font-style: normal; letter-spacing: .13em; text-transform: uppercase; }
 
 @media (max-width: 640px) {
+  body {
+    background-size: cover;
+    background-attachment: scroll;
+  }
   .hero { min-height: 760px; min-height: max(760px, 100svh); padding-inline: 8px; }
   .arch { margin-top: 0; }
   .arch-inner { padding: 56px 12px 24px; }
