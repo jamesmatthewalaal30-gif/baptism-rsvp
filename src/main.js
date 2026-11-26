@@ -20,7 +20,18 @@ function escapeHtml(value = '') {
 
 function eventMarkup() {
   return `
-    <header class="topbar"><a href="#" class="brand" aria-label="Kinri's celebration home">K<span>✝</span></a><a class="top-link" href="#rsvp">RSVP <span aria-hidden="true">↗</span></a></header>
+    <dialog class="welcome-intro" id="welcome-intro" aria-labelledby="welcome-title" aria-describedby="welcome-description">
+      <span class="welcome-mark" aria-hidden="true">✝</span>
+      <p class="eyebrow">YOU’RE INVITED</p>
+      <div class="ornament-divider" aria-hidden="true"><span>✦</span></div>
+      <h2 id="welcome-title">Welcome to Kinri’s celebration</h2>
+      <p class="welcome-description" id="welcome-description">Please join us for Kinri’s Holy Baptism and 1st Birthday on January 28, 2027.</p>
+      <div class="welcome-actions">
+        <button class="primary-button full-button" id="open-invitation" type="button" autofocus>Open invitation <span aria-hidden="true">↗</span></button>
+      </div>
+    </dialog>
+    <header class="topbar"><a href="#" class="brand" aria-label="Kinri's celebration home">K<span>✝</span></a><div class="topbar-actions"><button class="music-toggle" id="music-toggle" type="button" aria-pressed="false">Play music</button><a class="top-link" href="#rsvp">RSVP <span aria-hidden="true">↗</span></a></div></header>
+    <audio id="background-music" src="/Purity%20-%20Beautiful%20Piano%20Song,%20Relaxing%20BGM%20%EF%BD%9CBigRicePiano.mp3" loop preload="auto"></audio>
     <main>
       <section class="hero" aria-labelledby="event-title">
         <div class="arch">
@@ -69,15 +80,15 @@ function eventMarkup() {
           <p class="eyebrow">CELEBRATION ATTIRE</p>
           <div class="ornament-divider" aria-hidden="true"><span>✦</span></div>
           <h2 id="attire-title">What to wear</h2>
-          <p class="section-intro">Wear anything you like, but please avoid light pastel colors.</p>
-          <ul class="attire-palette" aria-label="Light pastel colors to avoid">
+          <p class="section-intro">Please wear light pastel colors to celebrate with us.</p>
+          <ul class="attire-palette" aria-label="Light pastel colors to wear">
             <li class="attire-color"><span class="color-swatch swatch-blush" aria-hidden="true"></span><span>Blush pink</span></li>
             <li class="attire-color"><span class="color-swatch swatch-butter" aria-hidden="true"></span><span>Butter yellow</span></li>
             <li class="attire-color"><span class="color-swatch swatch-mint" aria-hidden="true"></span><span>Mint green</span></li>
             <li class="attire-color"><span class="color-swatch swatch-lilac" aria-hidden="true"></span><span>Soft lilac</span></li>
             <li class="attire-color"><span class="color-swatch swatch-blue" aria-hidden="true"></span><span>Powder blue</span></li>
           </ul>
-          <p class="attire-note">All other colors are welcome. Thank you!</p>
+          <p class="attire-note">Pastel shades are encouraged. Thank you for celebrating with us!</p>
         </div>
       </section>
 
@@ -130,6 +141,53 @@ function showPanel() {
     </div>
     ${!endpoint ? '<p class="setup-note">The RSVP form is awaiting its Google Apps Script URL. Please contact the event organizers to respond.</p>' : ''}`;
   panel.querySelector('#response-form').addEventListener('submit', submitResponse);
+}
+
+function setupBackgroundMusic() {
+  const audio = document.querySelector('#background-music');
+  const toggle = document.querySelector('#music-toggle');
+  const intro = document.querySelector('#welcome-intro');
+  const openInvitation = document.querySelector('#open-invitation');
+  audio.volume = 0.35;
+
+  function updateToggle() {
+    const playing = !audio.paused;
+    toggle.textContent = playing ? 'Pause music' : 'Play music';
+    toggle.setAttribute('aria-pressed', String(playing));
+  }
+
+  function setUnavailable(error) {
+    if (toggle.disabled) return;
+    toggle.textContent = 'Music unavailable';
+    toggle.disabled = true;
+    console.error('Background music could not be played.', error);
+  }
+
+  async function playMusic() {
+    try {
+      await audio.play();
+    } catch (error) {
+      if (error.name !== 'NotAllowedError' && error.name !== 'AbortError') {
+        setUnavailable(error);
+      }
+    }
+  }
+
+  toggle.addEventListener('click', () => {
+    if (audio.paused) {
+      playMusic();
+    } else {
+      audio.pause();
+    }
+  });
+  openInvitation.addEventListener('click', () => {
+    playMusic();
+    intro.close();
+  });
+  audio.addEventListener('play', updateToggle);
+  audio.addEventListener('pause', updateToggle);
+  audio.addEventListener('error', () => setUnavailable(audio.error));
+  intro.showModal();
 }
 
 async function request(url, options) {
@@ -199,3 +257,4 @@ async function submitResponse(event) {
 
 app.innerHTML = eventMarkup();
 showPanel();
+setupBackgroundMusic();
