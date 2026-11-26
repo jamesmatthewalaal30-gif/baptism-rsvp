@@ -114,8 +114,13 @@ footer .footer-date { margin-top: 6px; color: #7a8a9b; font-family: "DM Sans", s
 
 @media (max-width: 640px) {
   body {
-    background-size: cover;
-    background-attachment: scroll;
+    background-image: none;
+  }
+  .hero {
+    background-image: linear-gradient(rgba(251,251,248,.25), rgba(251,251,248,.25)), url("/images/safari-toile-frame-mobile.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%, 100% auto;
   }
   .hero { min-height: 760px; min-height: max(760px, 100svh); padding-inline: 8px; }
   .arch { margin-top: 0; }
