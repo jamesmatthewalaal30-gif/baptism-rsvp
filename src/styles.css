@@ -64,6 +64,18 @@ h2 { margin: 12px 0 0; color: #294d70; font-family: "Playfair Display", Georgia,
 .event-card > .event-address { margin-top: 3px; }
 .map-link { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 5px; margin-top: 13px; color: #45698d; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-decoration: underline; text-underline-offset: 3px; text-transform: uppercase; }
 .map-link:hover { color: #274566; }
+.attire { background: rgba(251,251,248,.76); }
+.attire-card { width: min(100%, 780px); margin: 0 auto; padding: clamp(30px, 5vw, 48px) 24px; border: 1px solid #b9cad9; background: rgba(255,255,255,.86); box-shadow: inset 0 0 0 5px rgba(255,255,255,.9), inset 0 0 0 6px rgba(146,171,194,.3); }
+.attire-card h2 { margin-top: 12px; }
+.attire-palette { display: grid; width: min(100%, 620px); grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin: 30px auto 0; padding: 0; list-style: none; }
+.attire-color { display: grid; justify-items: center; gap: 9px; color: #536981; font-size: 11px; }
+.color-swatch { width: clamp(42px, 7vw, 64px); aspect-ratio: 1; border: 1px solid rgba(39,69,102,.14); border-radius: 50%; box-shadow: inset 0 0 0 4px rgba(255,255,255,.42), 0 3px 9px rgba(39,69,102,.08); }
+.swatch-blush { background: #f3d9dc; }
+.swatch-butter { background: #f5edc9; }
+.swatch-mint { background: #d7eadc; }
+.swatch-lilac { background: #e4dcf0; }
+.swatch-blue { background: #d8e6f3; }
+.attire-note { margin: 22px 0 0; color: #64758a; font-family: "Playfair Display", Georgia, serif; font-size: 15px; font-style: italic; }
 .rsvp { position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 0, rgba(255,255,255,.72) 0%, rgba(251,251,248,.62) 75%); }
 .rsvp::before, .rsvp::after { position: absolute; top: 50%; width: 170px; height: 280px; border: 1px solid rgba(119,149,179,.2); border-radius: 50%; content: ""; pointer-events: none; transform: translateY(-50%); }
 .rsvp::before { left: -125px; }
@@ -129,6 +141,8 @@ footer .footer-date { margin-top: 6px; color: #7a8a9b; font-family: "DM Sans", s
   .section { padding: 70px 18px; }
   .event-cards { grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
   .event-card { min-height: 194px; }
+  .attire-card { padding-inline: 16px; }
+  .attire-palette { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 18px; }
   .rsvp::before, .rsvp::after { width: 100px; height: 220px; }
   .rsvp::before { left: -83px; }
   .rsvp::after { right: -83px; }

@@ -64,6 +64,23 @@ function eventMarkup() {
         </div>
       </section>
 
+      <section class="attire section" aria-labelledby="attire-title">
+        <div class="attire-card">
+          <p class="eyebrow">CELEBRATION ATTIRE</p>
+          <div class="ornament-divider" aria-hidden="true"><span>✦</span></div>
+          <h2 id="attire-title">What to wear</h2>
+          <p class="section-intro">Wear anything you like, but please avoid light pastel colors.</p>
+          <ul class="attire-palette" aria-label="Light pastel colors to avoid">
+            <li class="attire-color"><span class="color-swatch swatch-blush" aria-hidden="true"></span><span>Blush pink</span></li>
+            <li class="attire-color"><span class="color-swatch swatch-butter" aria-hidden="true"></span><span>Butter yellow</span></li>
+            <li class="attire-color"><span class="color-swatch swatch-mint" aria-hidden="true"></span><span>Mint green</span></li>
+            <li class="attire-color"><span class="color-swatch swatch-lilac" aria-hidden="true"></span><span>Soft lilac</span></li>
+            <li class="attire-color"><span class="color-swatch swatch-blue" aria-hidden="true"></span><span>Powder blue</span></li>
+          </ul>
+          <p class="attire-note">All other colors are welcome. Thank you!</p>
+        </div>
+      </section>
+
       <section class="rsvp section" id="rsvp" aria-labelledby="rsvp-title">
         <div class="rsvp-heading">
           <p class="eyebrow">YOUR PRESENCE IS A GIFT</p>
